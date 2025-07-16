@@ -8,26 +8,25 @@
     <script type="module" src="./index.js"></script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1>📊 Datos de Educación en Colombia</h1>
-        <p class="subtitle">
-          Visualización interactiva de indicadores educativos
-        </p>
-      </header>
-
+    <header>
+      <h1>Datos de Educación en Colombia</h1>
+      <p class="subtitle">
+        Visualización interactiva de indicadores educativos
+      </p>
+    </header>
+    <main>
       <div class="controls">
-        <div class="control-group">
+        <div>
           <label for="fileInput">Cargar archivo CSV:</label>
           <input type="file" id="fileInput" accept=".csv" />
         </div>
-        <div class="control-group">
+        <div>
           <label for="regionFilter">Filtrar por región:</label>
           <select id="regionFilter">
             <option value="">Todas las regiones</option>
           </select>
         </div>
-        <div class="control-group">
+        <div>
           <label for="metricSelect">Métrica a visualizar:</label>
           <select id="metricSelect">
             <option value="matricula">Matrícula</option>
@@ -35,10 +34,8 @@
             <option value="graduados">Graduados</option>
           </select>
         </div>
-        <div class="control-group">
-          <button onclick="loadSampleData()">Cargar Datos de Ejemplo</button>
-        </div>
       </div>
+      <button onclick="loadSampleData()">Cargar Datos de Ejemplo</button>
 
       <div class="stats-grid" id="statsGrid" style="display: none">
         <div class="stat-card">
@@ -86,7 +83,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
   </body>
 </html>
