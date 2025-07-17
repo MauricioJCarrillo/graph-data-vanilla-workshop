@@ -132,6 +132,7 @@ button:hover {
 }
 
 .chart-container {
+  height: 450px;
   padding: 25px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
@@ -149,7 +150,6 @@ button:hover {
 .chart {
   height: 300px;
   position: relative;
-  overflow: hidden;
 }
 
 .bar-chart {
@@ -170,14 +170,13 @@ button:hover {
 
 .bar-label {
   position: absolute;
-  bottom: -25px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -50px;
+  transform: rotateZ(90deg);
   font-size: 12px;
   font-weight: 600;
   color: #34495e;
   text-align: center;
-  width: max-content;
+  width: -webkit-fill-available;
 }
 
 .bar-value {
