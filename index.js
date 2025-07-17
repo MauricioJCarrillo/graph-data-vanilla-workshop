@@ -3,31 +3,31 @@ let filteredData = [];
 
 // Datos de ejemplo para Colombia
 const sampleData = `departamento,region,matricula,desercion,graduados,instituciones
-													Antioquia,Andina,850000,12.5,45000,450
-													Bogotá D.C.,Andina,920000,8.2,52000,380
-													Valle del Cauca,Andina,480000,14.1,28000,320
-													Cundinamarca,Andina,320000,11.8,18000,280
-													Santander,Andina,410000,13.2,22000,250
-													Atlántico,Caribe,380000,15.8,20000,180
-													Bolívar,Caribe,290000,16.5,15000,150
-													Córdoba,Caribe,250000,18.2,12000,140
-													Sucre,Caribe,180000,19.1,8000,95
-													Magdalena,Caribe,220000,17.8,10000,110
-													Meta,Orinoquia,150000,16.2,8000,85
-													Casanare,Orinoquia,95000,15.5,5000,60
-													Arauca,Orinoquia,80000,17.2,4000,45
-													Vichada,Orinoquia,25000,22.1,1200,25
-													Huila,Andina,280000,14.5,15000,180
-													Tolima,Andina,260000,15.2,14000,170
-													Boyacá,Andina,240000,13.8,13000,200
-													Nariño,Pacífica,320000,16.8,17000,190
-													Cauca,Pacífica,250000,17.5,13000,160
-													Chocó,Pacífica,120000,24.2,5000,80
-													Putumayo,Amazonia,85000,19.5,4000,55
-													Caquetá,Amazonia,110000,20.1,5500,65
-													Amazonas,Amazonia,45000,21.8,2000,35
-													Guainía,Amazonia,15000,23.5,800,20
-													Vaupés,Amazonia,12000,25.1,600,18`;
+Antioquia,Andina,850000,12.5,45000,450
+Bogotá D.C.,Andina,920000,8.2,52000,380
+Valle del Cauca,Andina,480000,14.1,28000,320
+Cundinamarca,Andina,320000,11.8,18000,280
+Santander,Andina,410000,13.2,22000,250
+Atlántico,Caribe,380000,15.8,20000,180
+Bolívar,Caribe,290000,16.5,15000,150
+Córdoba,Caribe,250000,18.2,12000,140
+Sucre,Caribe,180000,19.1,8000,95
+Magdalena,Caribe,220000,17.8,10000,110
+Meta,Orinoquia,150000,16.2,8000,85
+Casanare,Orinoquia,95000,15.5,5000,60
+Arauca,Orinoquia,80000,17.2,4000,45
+Vichada,Orinoquia,25000,22.1,1200,25
+Huila,Andina,280000,14.5,15000,180
+Tolima,Andina,260000,15.2,14000,170
+Boyacá,Andina,240000,13.8,13000,200
+Nariño,Pacífica,320000,16.8,17000,190
+Cauca,Pacífica,250000,17.5,13000,160
+Chocó,Pacífica,120000,24.2,5000,80
+Putumayo,Amazonia,85000,19.5,4000,55
+Caquetá,Amazonia,110000,20.1,5500,65
+Amazonas,Amazonia,45000,21.8,2000,35
+Guainía,Amazonia,15000,23.5,800,20
+Vaupés,Amazonia,12000,25.1,600,18`;
 
 function loadSampleData() {
   Papa.parse(sampleData, {
@@ -40,9 +40,7 @@ function loadSampleData() {
 
 function processData(data) {
   // Limpiar datos
-  currentData = data.filter(
-    (row) => row.departamento && row.departamento.trim() !== ""
-  );
+  currentData = data.filter((row) => row.departamento?.trim() !== "");
 
   // Convertir números
   currentData = currentData.map((row) => ({
@@ -89,13 +87,16 @@ function updateStats() {
     (sum, row) => sum + row.matricula,
     0
   );
+
   const avgDesertion =
     filteredData.reduce((sum, row) => sum + row.desercion, 0) /
     filteredData.length;
+
   const totalGraduates = filteredData.reduce(
     (sum, row) => sum + row.graduados,
     0
   );
+
   const totalInstitutions = filteredData.reduce(
     (sum, row) => sum + row.instituciones,
     0
@@ -103,10 +104,13 @@ function updateStats() {
 
   document.getElementById("totalStudents").textContent =
     totalStudents.toLocaleString();
+
   document.getElementById("avgDesertion").textContent =
     avgDesertion.toFixed(1) + "%";
+
   document.getElementById("totalGraduates").textContent =
     totalGraduates.toLocaleString();
+
   document.getElementById("totalInstitutions").textContent =
     totalInstitutions.toLocaleString();
 
@@ -115,6 +119,7 @@ function updateStats() {
 
 function updateCharts() {
   const metric = document.getElementById("metricSelect").value;
+
   updateBarChart("matriculaChart", "matricula", "Matrícula por Departamento");
   updateBarChart("desercionChart", "desercion", "Deserción por Departamento");
 }
