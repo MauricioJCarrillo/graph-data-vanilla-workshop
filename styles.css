@@ -132,7 +132,7 @@ button:hover {
 }
 
 .chart-container {
-  height: 450px;
+  height: 500px;
   padding: 25px;
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
@@ -164,7 +164,7 @@ button:hover {
   background: linear-gradient(135deg, #3498db, #34495e);
   border-radius: 5px 5px 0 0;
   position: relative;
-  min-width: 30px;
+  min-width: 40px;
   cursor: pointer;
 }
 
